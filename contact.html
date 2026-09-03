@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francois Mulongoyi-Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#home" class="logo">Francois Mulongoyi</a>
+
+       
+
+
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+        <div class="contact-form">
+            <h1 class="Contact"><span>Contact</span></h1>
+        </div>
+
+        <form class="contact" id="contactForm">
+            <div class="full-name">
+                <label>Full Name:</label>
+                <input type="text" id="full-name" placeholder="full-name" required>
+            </div>
+            <br><br>
+
+                <div class="email">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="email" required>
+                </div>
+                <br><br>
+
+            <div class="contact">
+                <label>Contact</label>
+                <input type="text" id="contact" placeholder="contact" maxlength="10 digit" required>
+            </div>  
+            <br><br> 
+            <p>Write your message down below:</p>
+            <div class="textarea">
+                <textarea id="messageText" row="4" cols="50" placeholder="Type your message here."></textarea>
+                <br>
+
+                <button type="submit">Send Message</button>
+            </div>
+            
+            
+        </form> 
+    </section>
+
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const myPhoneNumber = "0763684516"
+
+            const fullName = document.getElementById("full-name").value;
+            const email = document.getElementById("email").value;
+            const contactNum = document.getElementById("contact").value;
+            const message = document.getElementById("messageText").value;
+
+            const formattedMessage =
+            `New Contact Request*\n\n` +
+            `*Name:* ${fullName}\n` +
+            `*Email:* ${email}\n` +
+            `*Phone:* ${contactNum}\n\n` +
+            `*Message:*\n${message}`; 
+
+            const encodeMessage = encodeURIComponent(formattedMessage);
+
+            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${encodeMessage}`;
+            window.open(whatsappUrl, "_blank");
+
+        });
+    </script>
+    </body>
+    </html>
